@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Form-Wizard/static/css/main.bd1e503b.css",
-    "main.js": "/Form-Wizard/static/js/main.69f77f47.js",
+    "main.css": "/Form-Wizard/static/css/main.c806b5b0.css",
+    "main.js": "/Form-Wizard/static/js/main.bebb5316.js",
     "index.html": "/Form-Wizard/index.html",
-    "main.bd1e503b.css.map": "/Form-Wizard/static/css/main.bd1e503b.css.map",
-    "main.69f77f47.js.map": "/Form-Wizard/static/js/main.69f77f47.js.map"
+    "main.c806b5b0.css.map": "/Form-Wizard/static/css/main.c806b5b0.css.map",
+    "main.bebb5316.js.map": "/Form-Wizard/static/js/main.bebb5316.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd1e503b.css",
-    "static/js/main.69f77f47.js"
+    "static/css/main.c806b5b0.css",
+    "static/js/main.bebb5316.js"
   ]
 }
