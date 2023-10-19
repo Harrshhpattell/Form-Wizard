@@ -74,3 +74,22 @@ input[type="checkbox"] {
     opacity: 1;
   }
 }
+
+.error-message {
+  color: red;
+  font-weight: 100;
+  margin-left: 1rem;
+  animation: blink 5s linear ease-in-out;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
