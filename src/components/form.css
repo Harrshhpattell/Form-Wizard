@@ -1,0 +1,76 @@
+.form-field {
+  margin: 30px 0;
+}
+
+.firststep,
+.secondstep,
+.thirdstep {
+  animation: slide 0.5s ease-in;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.firststep > h1,
+.secondstep > h3,
+.thirdstep > h3 {
+  margin: 15px;
+  text-align: center;
+  color: #7950f2;
+}
+
+.firststep > hr,
+.secondstep > hr,
+.thirdstep > hr {
+  height: 5px;
+  background-color: #7950f2;
+  border: none;
+  border-radius: 50%;
+}
+
+label {
+  display: block;
+  margin: 7px 15px;
+}
+
+.inputs {
+  padding: 10px;
+  margin: 0 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 300px;
+}
+
+.inputs:focus {
+  outline: none;
+  border: 1.5px solid #1a73e8;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 15px;
+}
+
+.secondstep,
+.firststep {
+  animation: helo 0.5s ease-out;
+}
+
+@keyframes helo {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
