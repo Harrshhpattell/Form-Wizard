@@ -1,9 +1,35 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import "./index.css";
 import FormOne from "./components/FormOne";
 import FormSecond from "./components/FormSecond";
+import FormThird from "./components/FormThird";
+import SuccessPopup from "./components/SuccessPopup";
 
 function App() {
+  const [submittedData, setSubmittedData] = useState([]);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  console.log(submittedData);
+
+  const handleSubmitForm = () => {
+    const formData = {
+      fname,
+      lname,
+      email,
+      contact,
+      gender,
+      learnFrontend,
+      learnBackend,
+    };
+
+    setSubmittedData((prevData) => [...prevData, formData]);
+
+    dispatch({ type: "RESET" });
+    setShowSuccessPopup(true);
+    setTimeout(() => {
+      setShowSuccessPopup(false);
+    }, 3000);
+  };
+
   const initialState = {
     fname: "",
     lname: "",
@@ -12,6 +38,7 @@ function App() {
     gender: "",
     learnFrontend: false,
     learnBackend: false,
+    tc: false,
     step: 1,
     errors: {
       fname: "",
@@ -97,6 +124,10 @@ function App() {
           ...state,
           [action.payload]: action.value,
         };
+      case "RESET":
+        return {
+          ...initialState,
+        };
       default:
         return state;
     }
@@ -111,6 +142,7 @@ function App() {
       gender,
       learnFrontend,
       learnBackend,
+      tc,
       step,
       errors,
     },
@@ -122,8 +154,15 @@ function App() {
     dispatch({ type: "CHANGE", payload: name, value });
   };
 
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    dispatch({ type: "CHANGE", payload: name, value: checked });
+  };
+
   return (
     <div className="container">
+      {showSuccessPopup && <SuccessPopup />}
+
       <div className="numbers">
         <div className={step >= 1 ? "active" : ""}>1</div>
         <div className={step >= 2 ? "active" : ""}>2</div>
@@ -148,9 +187,12 @@ function App() {
               learnBackend={learnBackend}
               errors={errors}
               handleChange={handleChange}
+              handleCheckboxChange={handleCheckboxChange}
             />
           )}
-          {/* {step === 3 && <ThirdStep />} */}
+          {step === 3 && (
+            <FormThird tc={tc} handleCheckboxChange={handleCheckboxChange} />
+          )}
         </div>
       </div>
       <div className="buttons">
@@ -160,7 +202,18 @@ function App() {
         >
           Previous
         </button>
-        <button onClick={() => dispatch({ type: "STEP", payload: "next" })}>
+        <button
+          disabled={step === 3 ? !tc : false}
+          id={step === 3 && !tc ? "disabled-submit-btn" : ""}
+          onClick={() => {
+            if (step === 3) {
+              handleSubmitForm();
+              dispatch({ type: "RESET" });
+            } else {
+              dispatch({ type: "STEP", payload: "next" });
+            }
+          }}
+        >
           {step === 3 ? "Submit" : "Next"}
         </button>
       </div>

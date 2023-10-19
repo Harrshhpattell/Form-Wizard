@@ -2,12 +2,13 @@ import "./form.css";
 import PropTypes from "prop-types";
 
 FormSecond.propTypes = {
-  contact: PropTypes.number.isRequired,
+  contact: PropTypes.string.isRequired,
   gender: PropTypes.string.isRequired,
   learnFrontend: PropTypes.bool,
   learnBackend: PropTypes.bool,
   errors: PropTypes.object,
   handleChange: PropTypes.func.isRequired,
+  handleCheckboxChange: PropTypes.func.isRequired,
 };
 
 export default function FormSecond({
@@ -17,6 +18,7 @@ export default function FormSecond({
   learnBackend,
   errors,
   handleChange,
+  handleCheckboxChange,
 }) {
   return (
     <div className="secondstep">
@@ -62,7 +64,7 @@ export default function FormSecond({
           value="frontend"
           name="learnFrontend"
           checked={learnFrontend}
-          onChange={handleChange}
+          onChange={handleCheckboxChange}
         ></input>
         Frontend
         <input
@@ -70,7 +72,7 @@ export default function FormSecond({
           value="backend"
           name="learnBackend"
           checked={learnBackend}
-          onChange={handleChange}
+          onChange={handleCheckboxChange}
         ></input>
         Backend
         {errors.learn && <div className="error-message">{errors.learn}</div>}
